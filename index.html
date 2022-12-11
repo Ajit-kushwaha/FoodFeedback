@@ -3,21 +3,38 @@
 <head>
 <title>Food Feedback</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+    #bttn{
+        text-align: center;
+        max-width: fit-content;
+        max-height: fit-content;
+        /* height: 10px; */
+        /* padding-top: 100%; */
+        /* padding-bottom: 100%; */
+    
+    }
+    button{
+        background-color: wheat;
+        border: none;
+    }
+</style>
 </head>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script>
 
-        var btn01=0
-	var btn02=0
-	var btn03=0
+    var goodCount = 0;
+    var avgCount = 0;
+    var badCount = 0;
+        
 
  //create a user-defined function to download CSV file   
  function download_csv_file() {  
 //create CSV file data in an array 
         var csvFileData = [  
-        ['Good', btn01+1],  
-        ['Average', btn02+1],  
-        ['Bad', btn03+1],  
+        ['Good', goodCount],  
+        ['Average', avgCount],  
+        ['Bad', badCount],  
        
         ];
 
@@ -43,47 +60,64 @@
         hiddenElement.click();  
     }  
 
-function onClick1(element){
-         btn01=document.getElementById("btn01").value++
-        console.log(btn01)
-        document.getElementById("btn01").innerText=btn01.toString()
-    }
-    function onClick2(element){
-       btn02=document.getElementById("btn02").value++
-        console.log(btn02)
-        document.getElementById("btn02").innerText=btn02.toString()
-    }
-    function onClick3(element){
-        btn03=document.getElementById("btn03").value++
-        console.log(badCount)
-        document.getElementById("btn03").innerText=badCount.toString()
-    }
+// function onClick1(element){
+//          btn01=document.getElementById("btn01").value++
+//         console.log(btn01)
+//         document.getElementById("btn01").innerText=btn01.toString()
+//     }
+//     function onClick2(element){
+//        btn02=document.getElementById("btn02").value++
+//         console.log(btn02)
+//         document.getElementById("btn02").innerText=btn02.toString()
+//     }
+//     function onClick3(element){
+//         btn03=document.getElementById("btn03").value++
+//         console.log(badCount)
+//         document.getElementById("btn03").innerText=badCount.toString()
+//     }
+
+function countGood(){
+    goodCount= goodCount+1;
+    console.log(goodCount)
+    // document.getElementById("goodspan").innerText=goodCount.toString()
+    // document.getElementById("gifreaction").src = "thumbsup.webp"
+}
+function countAverage(){
+    avgCount= avgCount+1;
+    console.log(avgCount)
+    // document.getElementById("avgspan").innerText=avgCount.toString()
+}
+function countBad(){
+    badCount= badCount+1;
+    console.log(badCount)
+    // document.getElementById("badspan").innerText=badCount.toString()
+}
 </script>
 <body>
-
+    <!-- <div class="w3-container w3-third" id="bttn"> -->
+        <br><button onclick="download_csv_file()"></button>  
+    <!-- </div> -->
 <div class="w3-row-padding">
   	<div class="w3-container w3-third">
     	<img src="1Capture.PNG" style="width:100%;cursor:pointer" 
-    	onclick="onClick1(this)" class="w3-hover-opacity">
+    	onclick="countGood()" id="goodEmoji" class="w3-hover-opacity">
     	<input type="hidden" value="0" readonly id="btn01"></input>
   </div>
   
 <div class="w3-container w3-third">
     	<img src="2Capture.PNG" style="width:100%;cursor:pointer" 
-    	onclick="onClick2(this)" class="w3-hover-opacity">
+    	onclick="countAverage()" id="avgEmoji" class="w3-hover-opacity">
     	<input type="hidden" value="0" readonly id="btn02"></input>
   </div>
 
   <div class="w3-container w3-third">
     	<img src="3Capture.PNG" style="width:100%;cursor:pointer" 
-    	onclick="onClick3(this)" class="w3-hover-opacity">
+    	onclick="countBad()" id="badEmoji" class="w3-hover-opacity">
     	<input type="hidden" value="0" readonly id="btn03"></input>
   </div>
 </div>
 <div>
-<div class="w3-container w3-third">
-                <br><button onclick="download_csv_file()"> Download Review </button>  
-            </div>
+
            
 </body>
 </html>
